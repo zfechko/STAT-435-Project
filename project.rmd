@@ -1,0 +1,35 @@
+---
+title: "Stat 435 Project"
+author: "Zach Fechko (011711215) & Anthony Ghimpu ()"
+date: "`r format(Sys.Date(), '%d %B, %Y')`"
+output:
+    html_document:
+        theme: spacelab
+        highlight: tango
+        toc: true
+        toc_float: true
+---
+
+***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r label=imports, message=FALSE}
+library(MASS)
+library(ggplot2)
+attach(Boston)
+```
+
+## Aspects of the Data
+```{r label=aspects}
+str(Boston)
+names(Boston)
+dim(Boston)
+```
+
+## Task 2
+```{r label=task2}
+
+```
