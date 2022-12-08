@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r label=imports, message=FALSE}
 library(MASS)
 library(ggplot2)
+library(glmnet)
 attach(Boston)
 ```
 
@@ -30,6 +31,29 @@ dim(Boston)
 ```
 
 ## Task 2
+
 ```{r label=task2}
+#randomly split the data into 2 sets, 80% for training and 20% for testing
+#train set is used for fitting linear model
+#test set is used for evaluating the model
+
+set.seed(1)
+train <- sample(1:nrow(Boston), 0.8*nrow(Boston))
+test <- (-train)
+
+#fit linear model
+lm.fit <- lm(medv ~ ., data = Boston, subset = train)
+summary(lm.fit)
+```
+
+## Task 3
+
+```{r label=task3}
+
+```
+
+## Task 4
+
+```{r label=task4}
 
 ```
