@@ -15,18 +15,12 @@ Use the dataset `Boston` which is located in the `MASS` library. This dataset co
 
 3. Implement LASSO (with cross-validation to select the optimal tuning parameter) on all potential predictors without interactions between them, report the best model (that is based on the optimal tuning parameter) and its fitted model, conduct hypothesis tests on some coefficients of the model and report your findings, and assess the prediction accuracy of the fitted model.
 
-4. Implement ridge regression (with cross-validation to select the optimal tuning parameter)
-without interactions between them, report the best model (that is based on the optimal tuning
-parameter) and its fitted model, conduct hypothesis tests on some coefficients of the model
-and report your findings, and assess the prediction accuracy of the fitted model and report
-your findings.
 
-5. Among the best/optimal models you would find in (2), (3) and (4) respectively, which one has
+5. Among the best/optimal models you would find in (2), and (3) respectively, which one has
 the best prediction accuracy? If you consider a trade-off between the number of predictors in
-a model and its prediction accuracy, which among the best models you found in (2), (3) and
-(4) would you prefer?
+a model and its prediction accuracy, which among the best models you found in (2), and (3)  would you prefer?
 
 <div class="alert alert-block alert-info">
-<b>Note:</b> For conducting hypothesis tests on some model coefficients for the models you found in (3)
-and (4) you can use the R library(hdi)
+<b>Note:</b> For conducting hypothesis tests on some model coefficients for the models you found in and (3)
+ you can use the R <code>library(hdi)</code>
 </div>
