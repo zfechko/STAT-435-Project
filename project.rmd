@@ -41,6 +41,9 @@ set.seed(1)
 train <- sample(1:nrow(Boston), 0.8*nrow(Boston))
 test <- (-train)
 
+x = model.matrix(medv ~ ., data = Boston)[,-1]
+y = Boston$medv
+
 #fit linear model
 lm.fit <- lm(medv ~ ., data = Boston, subset = train)
 summary(lm.fit)
@@ -49,40 +52,18 @@ summary(lm.fit)
 ## Task 3
 
 ```{r label=task3}
-library(caret)
-#Implement Lasso Regression
-#Use 10-fold cross validation to select the best tuning parameter lambda
-#Use the best lambda to fit the model on the training set
-#Use the model to predict the response on the test set
-#Conduct hypothesis testing to determine which predictors are significant
+library(glmnet)
+#fit lasso model
+grid <- 10^seq(10, -2, length = 100)
+lasso.mod <- glmnet(x[train,], y[train], alpha = 1, lambda = grid)
 
-#10-fold cross validation
 set.seed(1)
-ctrl <- trainControl(method = "cv", number = 10)
-lassoGrid <- expand.grid(alpha = 1, lambda = seq(0.001, 0.1, length = 100))
-lassoFit <- train(medv ~ ., data = Boston, method = "glmnet", trControl = ctrl, tuneGrid = lassoGrid, subset = train)
-lassoFit
+cv.out <- cv.glmnet(x[train,], y[train], alpha = 1)
+plot(cv.out)
+bestlam <- cv.out$lambda.min
+bestlam
 ```
 
-```{r label=task3.1}
-#best lambda
-lassoFit$bestTune
-
-#fit model on training set
-lassoFit$finalModel
-
-#predict response on test set
-lassoPred <- predict(lassoFit, newdata = Boston[test,])
-lassoPred
-
-#hypothesis testing
-#null hypothesis: coefficient = 0
-#alternative hypothesis: coefficient != 0
-#p-value < 0.05: reject null hypothesis
-#p-value > 0.05: fail to reject null hypothesis
-#p-value = 0: reject null hypothesis
-
-```
 
 ## Task 4
 
